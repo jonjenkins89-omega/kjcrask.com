@@ -184,7 +184,7 @@
   <section class="reader-magnet" id="stay-close" aria-labelledby="rooftop-title">
     <div class="magnet-art">
       <span class="magnet-number" aria-hidden="true">00</span>
-      <img src="/images/web/rooftop-720.webp" srcset="/images/web/rooftop-360.webp 360w, /images/web/rooftop-720.webp 720w" sizes="(max-width: 760px) 62vw, 330px" width="720" height="1152" alt="ROOFTOP, an exclusive Mirror Man scene by K.J. Crask" loading="lazy">
+      <img src="/images/web/rooftop-720.webp" srcset="/images/web/rooftop-360.webp 360w, /images/web/rooftop-720.webp 720w" sizes="(max-width: 760px) 62vw, 330px" width="720" height="1151" alt="ROOFTOP, an exclusive Mirror Man scene by K.J. Crask" loading="lazy">
     </div>
     <div class="magnet-copy">
       <p class="micro-label">Free exclusive scene</p>
@@ -199,7 +199,8 @@
         <span class="form-label">Reader list</span>
         <strong>Unlock the exclusive scene</strong>
         <p class="form-intro">Enter your email for ROOFTOP now, plus release news and reader-only email. First name is optional.</p>
-        <form class="reader-form" id="reader-form" action="https://assets.mailerlite.com/jsonp/2176883/forms/192817568428328088/subscribe" method="post" aria-label="Get the ROOFTOP bonus scene">
+        <noscript><style>.reader-form{display:none}</style><p class="form-intro">This form needs JavaScript. You can get ROOFTOP directly from <a href="https://dl.bookfunnel.com/3jmhy2s88u">BookFunnel</a>, which asks for your email there instead.</p></noscript>
+          <form class="reader-form" id="reader-form" action="https://assets.mailerlite.com/jsonp/2176883/forms/192817568428328088/subscribe" method="post" aria-label="Get the ROOFTOP bonus scene">
           <input type="hidden" name="ml-submit" value="1">
           <input type="hidden" name="anticsrf" value="true">
           <label for="reader-name">First name <span aria-hidden="true">(optional)</span></label>
@@ -207,13 +208,14 @@
           <label for="reader-email">Email address</label>
           <input id="reader-email" name="fields[email]" type="email" placeholder="you@example.com" autocomplete="email" inputmode="email" maxlength="254" required>
           <label class="honeypot" aria-hidden="true">Leave this field empty
-            <input name="website" type="text" tabindex="-1" autocomplete="off">
+            <input name="bf_extra_field" type="text" tabindex="-1" autocomplete="off">
           </label>
           <label class="consent-row">
             <input name="consent" type="checkbox" value="yes" required>
             <span>Send me K.J. Crask releases, bonus stories, and reader-only email. Unsubscribe anytime. <a href="/privacy/">Privacy policy.</a></span>
           </label>
           <p class="form-error" role="alert" id="form-error" hidden></p>
+          <p class="form-intro" id="form-fallback" hidden>Already on the list, or still stuck? <a href="https://dl.bookfunnel.com/3jmhy2s88u" target="_blank" rel="noreferrer">Read ROOFTOP here</a>.</p>
           <button class="button button-primary form-button" type="submit" id="form-button">Unlock ROOFTOP <span aria-hidden="true">&#8599;</span></button>
         </form>
       </div>

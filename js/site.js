@@ -36,6 +36,7 @@
   var formBlock = document.getElementById("signup-form-block");
   var success = document.getElementById("signup-success");
   var error = document.getElementById("form-error");
+  var fallback = document.getElementById("form-fallback");
   var submit = document.getElementById("form-button");
   if (!form || !success) return;
 
@@ -46,6 +47,7 @@
   var showError = function (message) {
     error.textContent = message;
     error.hidden = false;
+    if (fallback) fallback.hidden = false;
   };
 
   var showSuccess = function () {
@@ -61,11 +63,12 @@
   form.addEventListener("submit", function (event) {
     event.preventDefault();
     error.hidden = true;
+    if (fallback) fallback.hidden = true;
 
     var email = (form.elements["fields[email]"].value || "").trim();
     var name = (form.elements["fields[name]"].value || "").trim();
     var consent = form.elements["consent"].checked;
-    var honeypot = (form.elements["website"].value || "").trim();
+    var honeypot = (form.elements["bf_extra_field"].value || "").trim();
 
     if (honeypot) { showSuccess(); return; }
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { showError("Enter a valid email address."); return; }
@@ -74,6 +77,8 @@
     var body = new URLSearchParams();
     body.set("fields[email]", email);
     if (name) body.set("fields[name]", name.slice(0, 100));
+    body.set("fields[consent]", "yes, kjcrask.com form " + new Date().toISOString().slice(0, 10));
+    body.set("fields[signup_source]", "kjcrask.com");
     body.set("ml-submit", "1");
     body.set("anticsrf", "true");
 
@@ -94,6 +99,7 @@
         var first = fields && Object.keys(fields)[0];
         if (first && fields[first] && fields[first][0]) message = fields[first][0];
       } catch (ignored) {}
+      if (/already|exists|subscribed/i.test(message)) { showSuccess(); return; }
       showError(message);
     }).catch(function () {
       showError("The reader list is temporarily unavailable. Please try again in a moment.");

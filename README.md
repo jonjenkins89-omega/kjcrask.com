@@ -14,4 +14,5 @@ Where things are:
 
 Book links live in `index.html`. Search for the ASIN to change one.
 MailerLite form: account 2176883, form 192817568428328088 (group "ROOFTOP | Mirror Man").
-ROOFTOP delivery: https://dl.bookfunnel.com/3jmhy2s88u
+ROOFTOP delivery after signup (no email gate): https://dl.bookfunnel.com/jji6oi7ijr
+ROOFTOP opt-in page (captures email itself, used for no-JavaScript readers and book back matter): https://dl.bookfunnel.com/3jmhy2s88u

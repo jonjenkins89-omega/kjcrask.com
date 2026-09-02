@@ -1,0 +1,29 @@
+/* kjcrask.com reading pages: /rooftop/read/, /sample/watched/, /sample/what-he-took/.
+   Loads after site.css on those pages and on /rooftop/. Long-form comfort on the ivory legal-page ground. */
+.legal-page .button{text-decoration:none}
+.legal-page .lede{font-size:1.05rem}
+.legal-page .adult-note{font-size:.9rem}
+.reading{font-family:var(--display);font-size:1.16rem;margin:3rem 0 0;max-width:62ch}
+.reading p{color:#2a2723;font-family:var(--display);font-size:1.16rem;line-height:1.7;margin:0 0 1.25em}
+.reading em{font-style:italic}
+.scene-break{border:0;height:auto;line-height:1;margin:2.5rem 0;overflow:visible;text-align:center}
+.scene-break::after{content:"\2022 \2022 \2022";color:var(--red);letter-spacing:.6em}
+.chapter-head{margin:0 0 2.5rem}
+.chapter-head h2{font-family:var(--display);font-size:2rem;font-weight:400;letter-spacing:.02em;margin:0;text-transform:uppercase}
+.chapter-head .chapter-title{color:#2a2723;font-size:1.4rem;font-style:italic;margin:.35rem 0 0}
+.chapter-head .chapter-pov{color:#9d1021;font-family:var(--sans);font-size:.7rem;font-weight:800;letter-spacing:.25em;margin:1rem 0 0;text-transform:uppercase}
+.keep-reading{border-top:1px solid var(--line-dark);margin-top:3.5rem;padding-top:2.5rem}
+.keep-reading h2{margin-top:0}
+.keep-reading .button{margin-top:.4rem}
+.reading-note{font-size:.9rem}
+.option-stack{display:flex;flex-direction:column;gap:.9rem;margin:2rem 0 1.2rem;max-width:26rem}
+.option-stack .button{margin:0;width:100%}
+.button-ink{background:transparent;border-color:var(--ink);color:var(--ink)}
+.button-ink:hover{background:var(--ink);color:var(--ivory);transform:translateY(-2px)}
+@media (max-width:600px){
+  .reading{font-size:1.06rem;margin-top:2.2rem}
+  .reading p{font-size:1.06rem;line-height:1.65;margin-bottom:1.1em}
+  .scene-break{margin:2rem 0}
+  .chapter-head h2{font-size:1.6rem}
+  .keep-reading{margin-top:2.8rem;padding-top:2rem}
+}

@@ -8,6 +8,28 @@
 (function () {
   "use strict";
 
+  /* ---------- analytics events (no-ops when GA is not loaded) ---------- */
+  var track = function (name, params) {
+    try { if (typeof window.gtag === "function") window.gtag("event", name, params || {}); } catch (ignored) {}
+  };
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest ? e.target.closest("a") : null;
+    if (!a || !a.href) return;
+    var ev = a.getAttribute("data-event");
+    var m = a.href.match(/amazon\.com\/dp\/([A-Z0-9]{10})/);
+    if (!ev && m) ev = "amazon_click";
+    if (!ev && a.href.indexOf("/downloads/") !== -1) ev = "download_epub";
+    if (!ev && a.href.indexOf("bookfunnel.com") !== -1) ev = "bookfunnel_click";
+    if (!ev) return;
+    track(ev, {
+      asin: m ? m[1] : undefined,
+      book: a.getAttribute("data-book") || undefined,
+      place: a.getAttribute("data-place") || undefined,
+      link_url: a.href,
+      page: location.pathname
+    });
+  }, true);
+
   /* ---------- year ---------- */
   var year = document.getElementById("year");
   if (year) year.textContent = String(new Date().getFullYear());
@@ -47,12 +69,14 @@
   var INBOX_COPY = false;
 
   var showError = function (message) {
+    track("signup_error", { page: location.pathname, reason: String(message).slice(0, 80) });
     error.textContent = message;
     error.hidden = false;
     if (fallback) fallback.hidden = false;
   };
 
   var showSuccess = function () {
+    track("signup_success", { page: location.pathname });
     formBlock.hidden = true;
     if (INBOX_COPY) {
       var p = success.querySelector("p");

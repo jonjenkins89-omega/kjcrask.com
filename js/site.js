@@ -2,6 +2,8 @@
    Two jobs only: the mobile menu and the ROOFTOP signup form.
    The form posts straight to MailerLite (CORS is open on their form endpoint).
    On success the BookFunnel link is revealed. Nothing else runs on this site.
+   No honeypot on purpose: MailerLite's double opt-in is the bot filter, and a
+   honeypot can be autofilled by a real reader's browser.
 */
 (function () {
   "use strict";
@@ -68,9 +70,7 @@
     var email = (form.elements["fields[email]"].value || "").trim();
     var name = (form.elements["fields[name]"].value || "").trim();
     var consent = form.elements["consent"].checked;
-    var honeypot = (form.elements["bf_extra_field"].value || "").trim();
 
-    if (honeypot) { showSuccess(); return; }
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { showError("Enter a valid email address."); return; }
     if (!consent) { showError("Confirm that you want to receive reader email."); return; }
 
